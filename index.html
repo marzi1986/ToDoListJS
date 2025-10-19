@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO List</title>
+    <link rel="stylesheet" href="Style/css.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h2> To Do List App</h2>
+        <div class="input-section">
+            <input id="input-new-task" type="text" placeholder="New Task...">
+            <input id="input-date" type="date">
+            <button id="add-btn" >Add</button>
+
+        </div>
+        <div class="todo-operator" >
+            <div>
+                <button class="category">All</button>
+                <button class="category">Pending</button>
+                <button class="category">Completed</button>
+            </div>
+            <button id="btn-deleteAll"> Delete All</button>
+        </div>
+ </div>
+ <div id="alert-message">
+
+ </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Task
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            task1
+                        </td>
+                        <td>
+                            date
+                        </td>
+                        <td>
+                            pending
+                        </td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Do</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+   
+    
+    <script src="Code/js.js"></script>
+</body>
+</html>
