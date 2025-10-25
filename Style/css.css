@@ -97,12 +97,14 @@ thead th:last-child{
     background-color: var(--color-task);
     padding: 5px;
     text-align: center;
+    width: 25%;
 
 
  }
  tbody td button{
     padding: 4px 8px;
     margin:2px 5px;
+    width: 48px;
 
  }
  tbody td button:nth-child(1){

@@ -4,6 +4,9 @@ const newDate= document.getElementById("input-date");
 const alertMessage=document.getElementById("alert-message");
 let todos= JSON.parse(localStorage.getItem("ToDos")) || [];
 const editButton=document.getElementById("edit-btn");
+const catButtons=document.querySelectorAll(".category");
+    
+
 
 
 
@@ -30,16 +33,18 @@ const generateId=()=>{
          return id;
     }
 
-    const displayToDos=()=>{
+    const displayToDos=(data)=>{
+
+        const listTodo= data || todos;
      
-        if(todos.length ===0){
+        if(listTodo.length ===0){
             tBody.innerHTML="<tr><td colspan='4'>NO Task Found!</td></tr>";
             return;
         }
         else{
             
             tBody.innerHTML="";
-            todos.forEach((todo)=>{
+            listTodo.forEach((todo)=>{
               
                 tBody.innerHTML= tBody.innerHTML+ `
                <tr>
@@ -119,7 +124,7 @@ const toggleHandler=(id)=>{
 
  saveToLocal();
     displayToDos();
-    showAlert("status was changed successfullt", "error");
+    showAlert("status was changed successfully", "error");
 
     
 
@@ -155,12 +160,40 @@ const editHandler= (id)=>{
 
      newTask.value=editTask.task;
      newDate.value=editTask.date;
-     editButton.dataset.id=id;
-    
+     editButton.dataset.id=id;  
    
     
 }
-window.addEventListener("load", displayToDos )
+
+const filterTodos=(event)=>{
+
+    const filterType= event.target.dataset.filter;
+   
+    let ftodos=null;
+ 
+    switch(filterType){
+    
+        case "pending":
+              ftodos = todos.filter(todo => todo.completed === false);
+              break;
+        
+        case "completed":
+              ftodos = todos.filter(todo => todo.completed);
+              break;
+    
+        default:
+             ftodos=todos;
+    }
+
+    displayToDos(ftodos);
+   console.log("filter", ftodos);
+}
+
+catButtons.forEach((button)=>{
+    button.addEventListener("click", filterTodos);
+});
+
+window.addEventListener("load",()=> displayToDos() )
 addButton.addEventListener("click", saveTasksHandler);
 editButton.addEventListener("click", applyEdit);
 btnDeleteall.addEventListener("click", deleteAllHandler);
